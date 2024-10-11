@@ -3,7 +3,7 @@ package lucavig.dao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import lucavig.entities.Prestito;
-import lucavig.entities.Utente;
+
 
 public class PrestitoDAO {
 

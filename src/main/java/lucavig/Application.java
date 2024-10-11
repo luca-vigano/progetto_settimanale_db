@@ -73,17 +73,22 @@ public class Application {
 
 
 
-        Utente aldoFromDb = ud.findById(1);
-        Utente giovanniFromDb = ud.findById(1);
-        Utente giacomoFromDb = ud.findById(1);
-        Stampa stampafromDb1 = sd.findByISBN(2);
-        Stampa stampafromDb2 = sd.findByISBN(4);
-        Stampa stampafromDb3 = sd.findByISBN(5);
-        Stampa stampafromDb4 = sd.findByISBN(7);
-        Prestito prestitoAldo1 = new Prestito(aldoFromDb,stampafromDb1,LocalDate.of(2024,9,9),LocalDate.of(2024,10,9));
-        Prestito prestitoAldo2 = new Prestito(aldoFromDb,stampafromDb2,LocalDate.of(2024,9,9),LocalDate.of(2024,10,9));
-        Prestito prestitoGiovanni = new Prestito(giovanniFromDb,stampafromDb3,LocalDate.of(2024,9,9),LocalDate.of(2024,10,9));
-        Prestito prestitoGiacomo = new Prestito(giacomoFromDb,stampafromDb4,LocalDate.of(2024,9,9),LocalDate.of(2024,10,9));
+//        Utente aldoFromDb = ud.findById(1);
+//        Utente giovanniFromDb = ud.findById(1);
+//        Utente giacomoFromDb = ud.findById(1);
+//        Stampa stampafromDb1 = sd.findByISBN(2);
+//        Stampa stampafromDb2 = sd.findByISBN(4);
+//        Stampa stampafromDb3 = sd.findByISBN(5);
+//        Stampa stampafromDb4 = sd.findByISBN(7);
+//        Prestito prestitoAldo1 = new Prestito(aldoFromDb,stampafromDb1,LocalDate.of(2024,9,1),LocalDate.of(2024,9,28));
+//        Prestito prestitoAldo2 = new Prestito(aldoFromDb,stampafromDb2,LocalDate.of(2024,10,10));
+//        Prestito prestitoGiovanni = new Prestito(giovanniFromDb,stampafromDb3,LocalDate.of(2024,8,9));
+//        Prestito prestitoGiacomo = new Prestito(giacomoFromDb,stampafromDb4,LocalDate.of(2024,5,1),LocalDate.of(2024,5,20));
+//
+//        pd.save(prestitoAldo1);
+//        pd.save(prestitoAldo2);
+//        pd.save(prestitoGiovanni);
+//        pd.save(prestitoGiacomo);
 
         em.close();
         emf.close();

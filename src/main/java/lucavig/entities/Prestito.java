@@ -9,6 +9,9 @@ import java.time.LocalDate;
 @Table(name = "prestito")
 public class Prestito {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected long idEmissionePrestito;
+
     @ManyToOne
     @JoinColumn(name = "utente")
     protected Utente utente;
@@ -23,12 +26,24 @@ public class Prestito {
     public Prestito(){
     }
 
+
+    public Prestito(Utente utente, Stampa stampa, LocalDate dataInizioPrestito) {
+        this.utente = utente;
+        this.stampa = stampa;
+        this.dataInizioPrestito = dataInizioPrestito;
+        this.dataRestituzionePrevista = dataInizioPrestito.plusDays(30);
+    }
+
     public Prestito(Utente utente, Stampa stampa, LocalDate dataInizioPrestito, LocalDate dataRestituzioneEffettiva) {
         this.utente = utente;
         this.stampa = stampa;
         this.dataInizioPrestito = dataInizioPrestito;
         this.dataRestituzionePrevista = dataInizioPrestito.plusDays(30);
         this.dataRestituzioneEffettiva = dataRestituzioneEffettiva;
+    }
+
+    public long getIdEmissionePrestito() {
+        return idEmissionePrestito;
     }
 
     public Utente getUtente() {
@@ -59,6 +74,10 @@ public class Prestito {
         return dataRestituzionePrevista;
     }
 
+    public void setDataRestituzionePrevista(LocalDate dataRestituzionePrevista) {
+        this.dataRestituzionePrevista = dataRestituzionePrevista;
+    }
+
     public LocalDate getDataRestituzioneEffettiva() {
         return dataRestituzioneEffettiva;
     }
@@ -70,7 +89,8 @@ public class Prestito {
     @Override
     public String toString() {
         return "Prestito{" +
-                "utente=" + utente +
+                "idEmissionePrestito=" + idEmissionePrestito +
+                ", utente=" + utente +
                 ", stampa=" + stampa +
                 ", dataInizioPrestito=" + dataInizioPrestito +
                 ", dataRestituzionePrevista=" + dataRestituzionePrevista +

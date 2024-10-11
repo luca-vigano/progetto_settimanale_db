@@ -2,9 +2,12 @@ package lucavig.dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
 import lucavig.entities.Stampa;
 import lucavig.entities.Utente;
 import lucavig.exceptions.NotFoundISBN;
+
+import java.util.List;
 
 public class UtenteDAO {
 
@@ -28,4 +31,5 @@ public class UtenteDAO {
         if (found == null) throw new NotFoundISBN(id);
         return found;
     }
+
 }

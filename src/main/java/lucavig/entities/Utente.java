@@ -13,6 +13,7 @@ public class Utente {
     private LocalDate dataDiNascita;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @OneToMany(mappedBy = "utente")
     private long numeroDiTessera;
 
 

@@ -90,6 +90,8 @@ public class Application {
 //        pd.save(prestitoGiovanni);
 //        pd.save(prestitoGiacomo);
 
+        pd.trovaLibriDaTessera(1).forEach(System.out::println);
+
         em.close();
         emf.close();
 

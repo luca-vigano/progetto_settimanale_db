@@ -2,8 +2,11 @@ package lucavig.dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
 import lucavig.entities.Stampa;
-import lucavig.exceptions.NotFountISBN;
+import lucavig.exceptions.NotFoundISBN;
+
+import java.util.List;
 
 public class StampaDAO {
 
@@ -25,11 +28,11 @@ public class StampaDAO {
 
     public Stampa findByISBN (long stampaISBN) {
         Stampa found = entityManager.find(Stampa.class, stampaISBN);
-        if (found == null) throw new NotFountISBN(stampaISBN);
+        if (found == null) throw new NotFoundISBN(stampaISBN);
         return found;
     }
 
-    public void deleteStampa (long stampaISBN) {
+    public void deleteStampaFromISBN (long stampaISBN) {
         Stampa stampaDaCancellare = this.findByISBN(stampaISBN);
 
         EntityTransaction transaction = entityManager.getTransaction();
@@ -43,4 +46,21 @@ public class StampaDAO {
     }
 
 
+    public List<Stampa> searchByPubbYear(int anno){
+        TypedQuery<Stampa> query = entityManager.createQuery("SELECT s FROM Stampa s WHERE s.annoDiPubblicazione = :anno", Stampa.class);
+        query.setParameter("anno", anno);
+        return query.getResultList();
+    }
+
+    public List<Stampa> searchByAuthor(String autore){
+        TypedQuery<Stampa> query = entityManager.createQuery("SELECT s FROM Stampa s WHERE s.autore = :autore", Stampa.class);
+        query.setParameter("autore", autore);
+        return query.getResultList();
+    }
+
+    public List<Stampa> searchByTitle(String titolo){
+        TypedQuery<Stampa> query = entityManager.createQuery("SELECT s FROM Stampa s WHERE s.titolo LIKE :titolo", Stampa.class);
+        query.setParameter("titolo","%" + titolo + "%");
+        return query.getResultList();
+    }
 }

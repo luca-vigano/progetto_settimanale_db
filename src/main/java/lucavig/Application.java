@@ -4,11 +4,11 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import lucavig.dao.StampaDAO;
-import lucavig.entities.Libri;
-import lucavig.entities.Periodicita;
-import lucavig.entities.Riviste;
-import lucavig.entities.Stampa;
+import lucavig.dao.UtenteDAO;
+import lucavig.entities.*;
 import lucavig.exceptions.NotFoundISBN;
+
+import java.time.LocalDate;
 
 
 public class Application {
@@ -19,6 +19,7 @@ public class Application {
 
         EntityManager em = emf.createEntityManager();
         StampaDAO sd = new StampaDAO(em);
+        UtenteDAO ud = new UtenteDAO(em);
 
 //        Libri l1 = new Libri("il signore degli anelli 1",2010,500,"J. R. R. Tolkien","romanzo");
 //        Libri l2 = new Libri("harry potter",2015,1000," J. K. Rowling","romanzo");
@@ -28,6 +29,14 @@ public class Application {
 //        Riviste r1=new Riviste("caccia e pesca", 2023,50, Periodicita.MENSILE);
 //        Riviste r2=new Riviste("ricettario", 2023,50, Periodicita.SETTIMANALE);
 //        Riviste r3=new Riviste("taglia e cuci", 2023,50, Periodicita.SEMESTRALE);
+
+        Utente aldo = new Utente("Aldo", "Baglio", LocalDate.of(1960,5,21));
+        Utente giovanni = new Utente("Giovanni", "Storti", LocalDate.of(1957,7,11));
+        Utente giacomo = new Utente("Giacomo", "Poretti", LocalDate.of(1955,9,2));
+
+        ud.save(aldo);
+        ud.save(giacomo);
+        ud.save(giovanni);
 
         //AGGIUNTA ELEMENTI AL CATALOGO
 //        sd.save(l1);

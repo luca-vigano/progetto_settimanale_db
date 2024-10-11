@@ -2,6 +2,7 @@ package lucavig.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -9,7 +10,7 @@ import java.util.Date;
 public class Utente {
     private String nome;
     private String cognome;
-    private Date dataDiNascita;
+    private LocalDate dataDiNascita;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long numeroDiTessera;
@@ -18,7 +19,7 @@ public class Utente {
     public Utente(){
     }
 
-    public Utente(String nome, String cognome, Date dataDiNascita) {
+    public Utente(String nome, String cognome, LocalDate dataDiNascita) {
         this.nome = nome;
         this.cognome = cognome;
         this.dataDiNascita = dataDiNascita;
@@ -40,11 +41,11 @@ public class Utente {
         this.cognome = cognome;
     }
 
-    public Date getDataDiNascita() {
+    public LocalDate getDataDiNascita() {
         return dataDiNascita;
     }
 
-    public void setDataDiNascita(Date dataDiNascita) {
+    public void setDataDiNascita(LocalDate dataDiNascita) {
         this.dataDiNascita = dataDiNascita;
     }
 

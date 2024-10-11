@@ -26,9 +26,12 @@ public class PrestitoDAO {
         System.out.println("Il prestito di " + prestito.getStampa() + " è stato salvato correttamente");
     }
 
-    public List<Stampa> trovaLibriDaTessera(long tesseraId) {
-        TypedQuery<Stampa> query = entityManager.createQuery("SELECT s FROM Prestito p JOIN p.stampa s WHERE p.utente.numeroDiTessera = :tesseraId AND p.dataRestituzioneEffettiva IS NULL", Stampa.class);
-        query.setParameter("tesseraId", tesseraId);
-        return query.getResultList();
-    }
+
+    // NON TENERE CONTO PERCHE' DOPO 2 ORE SOLO A CAPIRE COME FARE QUESTO PUNTO E N AULIN DOVUTO L'HO CERCATO SU INTERNET
+    // E MESSO QUI GIUSTO PER CAPIRLO/STUDIARLO E PROVARLO QUINDI NON E' DA TENERE IN CONTO
+//    public List<Stampa> trovaLibriDaTessera(long tesseraId) {
+//        TypedQuery<Stampa> query = entityManager.createQuery("SELECT s FROM Prestito p JOIN p.stampa s WHERE p.utente.numeroDiTessera = :tesseraId AND p.dataRestituzioneEffettiva IS NULL", Stampa.class);
+//        query.setParameter("tesseraId", tesseraId);
+//        return query.getResultList();
+//    }
 }

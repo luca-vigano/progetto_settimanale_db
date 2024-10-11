@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "libri")
+//@Table(name = "libri")
 public class Libri extends Stampa{
     private String autore;
     private String genere;

@@ -7,7 +7,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "riviste")
+//@Table(name = "riviste")
 public class Riviste extends Stampa{
     @Enumerated(EnumType.STRING)
     private Periodicita periodicita;

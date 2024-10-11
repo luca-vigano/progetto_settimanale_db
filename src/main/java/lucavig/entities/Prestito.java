@@ -7,7 +7,7 @@ import java.util.Date;
 @Entity
 @Table(name = "prestito")
 public class Prestito {
-
+    @Id
     @ManyToOne
     @JoinColumn(name = "utente")
     protected Utente utente;

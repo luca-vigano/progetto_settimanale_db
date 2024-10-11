@@ -2,7 +2,8 @@ package lucavig.entities;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "prestito")
@@ -15,18 +16,18 @@ public class Prestito {
     @OneToOne
     @JoinColumn(name = "elemento prestato")
     protected Stampa stampa;
-    protected Date dataInizioPrestito;
-    protected Date dataRestituzionePrevista;
-    protected Date dataRestituzioneEffettiva;
+    protected LocalDate dataInizioPrestito;
+    protected LocalDate dataRestituzionePrevista;
+    protected LocalDate dataRestituzioneEffettiva;
 
     public Prestito(){
     }
 
-    public Prestito(Utente utente, Stampa stampa, Date dataInizioPrestito, Date dataRestituzionePrevista, Date dataRestituzioneEffettiva) {
+    public Prestito(Utente utente, Stampa stampa, LocalDate dataInizioPrestito, LocalDate dataRestituzioneEffettiva) {
         this.utente = utente;
         this.stampa = stampa;
         this.dataInizioPrestito = dataInizioPrestito;
-        this.dataRestituzionePrevista = dataRestituzionePrevista;
+        this.dataRestituzionePrevista = dataInizioPrestito.plusDays(30);
         this.dataRestituzioneEffettiva = dataRestituzioneEffettiva;
     }
 
@@ -46,27 +47,23 @@ public class Prestito {
         this.stampa = stampa;
     }
 
-    public Date getDataInizioPrestito() {
+    public LocalDate getDataInizioPrestito() {
         return dataInizioPrestito;
     }
 
-    public void setDataInizioPrestito(Date dataInizioPrestito) {
+    public void setDataInizioPrestito(LocalDate dataInizioPrestito) {
         this.dataInizioPrestito = dataInizioPrestito;
     }
 
-    public Date getDataRestituzionePrevista() {
+    public LocalDate getDataRestituzionePrevista() {
         return dataRestituzionePrevista;
     }
 
-    public void setDataRestituzionePrevista(Date dataRestituzionePrevista) {
-        this.dataRestituzionePrevista = dataRestituzionePrevista;
-    }
-
-    public Date getDataRestituzioneEffettiva() {
+    public LocalDate getDataRestituzioneEffettiva() {
         return dataRestituzioneEffettiva;
     }
 
-    public void setDataRestituzioneEffettiva(Date dataRestituzioneEffettiva) {
+    public void setDataRestituzioneEffettiva(LocalDate dataRestituzioneEffettiva) {
         this.dataRestituzioneEffettiva = dataRestituzioneEffettiva;
     }
 

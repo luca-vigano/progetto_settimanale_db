@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import lucavig.entities.Stampa;
 import lucavig.entities.Utente;
+import lucavig.exceptions.NotFoundISBN;
 
 public class UtenteDAO {
 
@@ -20,5 +21,11 @@ public class UtenteDAO {
         transaction.commit();
 
         System.out.println("L'utente " + utente.getNome() + " è stato salvato correttamente");
+    }
+
+    public Utente findById (long id) {
+        Utente found = entityManager.find(Utente.class, id);
+        if (found == null) throw new NotFoundISBN(id);
+        return found;
     }
 }
